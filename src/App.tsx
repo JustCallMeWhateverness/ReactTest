@@ -1,24 +1,43 @@
-import useFetchJson from './utils/useFetchJson';
-import Animal from './Animal';
-import Note from './Note';
+import { useState } from 'react';
+import useFetchJson from "./utils/useFetchJson";
 
-export interface AnimalData {
-  species: string;
-  description: string;
+interface User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
 }
 
 export default function App() {
 
-  // Fetch the animals from an url returning json
-  const animals = useFetchJson<AnimalData[]>('/json/animals.json');
-  
-  return animals && <>
-    <h1>Animals I like...</h1>
-    <Note />
-    {animals
-      .filter(({ species }) => species !== 'snake')
-      .sort((a, b) => a.species > b.species ? 1 : -1)
-      .map((props, i) => <Animal key={i} {...props} />)
-    }
-  </>;
+  const [search, setSearch] = useState('');
+  const users = useFetchJson<User[]>('/json/users.json');
+
+  const found = users?.filter(({ firstName, lastName }) => {
+    const wholeName = firstName + ' ' + lastName;
+    return wholeName.toLowerCase().includes(search.toLowerCase());
+  });
+
+  return <main>
+    <label>
+      Search:&nbsp;
+      <input
+        type="text"
+        value={search}
+        onChange={event => setSearch(event.target.value)}
+        placeholder="Search by name"
+      />
+    </label>
+
+    {found?.map(({
+      id, firstName, lastName, email, phone
+    }) => <article key={id}>
+        <h3>{firstName} {lastName}</h3>
+        <p><b>Email: </b>{email}</p>
+        <p><b>Phone: </b>{phone}</p>
+      </article>
+    )}
+  </main>;
+
 }
