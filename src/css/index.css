@@ -29,3 +29,24 @@ article {
   padding: 10px;
   box-shadow: inset 0 0 5px #ccc;
 }
+
+article:hover {
+  box-shadow: inset 0 0 10px #999;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+article:nth-child(even) {
+  transform: rotate(3deg);
+}
+
+article:nth-child(even):hover {
+  transform: rotate(0deg);
+}
+
+article:nth-child(odd):hover {
+  transform: rotate(0deg);
+}
+
+article:nth-child(odd) {
+  transform: rotate(-3deg);
+}
