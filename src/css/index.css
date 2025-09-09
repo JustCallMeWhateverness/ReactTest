@@ -10,22 +10,4 @@
 
 body {
   margin: 20px;
-  text-align: center;
-}
-
-button {
-  font: inherit;
-  cursor: pointer;
-  border: none;
-  margin: 20px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transform: rotate(50deg);
-}
-
-input {
-  font: inherit;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
 }
