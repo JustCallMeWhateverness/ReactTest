@@ -11,3 +11,10 @@
 body {
   margin: 20px;
 }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+
+}
