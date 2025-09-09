@@ -1,16 +1,16 @@
 import { useState } from "react";
 import Greeter from "./Greeter";
+import Input from "./Input";
 
 export default function App() {
   const [greeting, setGreeting] = useState("Hi");
-  const [name, setName] = useState("World");
+  const [names, setNames] = useState("World");
 
   return (
     <>
-      <input value={name}
-        onChange={event => setName(event.target.value)} />
+      <Input {...{ names, setNames }} />{" "}
 
-      <Greeter {...{ greeting, setGreeting, name }} />{" "}
+      <Greeter {...{ greeting, setGreeting, names }} />{" "}
     </>
   );
 }
