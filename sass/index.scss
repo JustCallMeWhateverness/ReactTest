@@ -1,5 +1,15 @@
 @use "bootstrap-import";
 
 body {
-  color: red;
+  text-align: center;
+}
+
+h1 {
+  transform: rotate(-5deg);
+  transition: transform 10s;
+}
+
+h1:hover {
+  transform: rotate(5deg);
+  transition: transform 0.2s;
 }
